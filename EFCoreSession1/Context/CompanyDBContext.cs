@@ -27,6 +27,7 @@ namespace EFCoreSession1.Context
         //if you want a model turned ito table in database 
         //you must use DbSet<T> property
         public DbSet<Models.Employee> Employees { get; set; }
+        public DbSet<Models.User> UserTable { get; set; }
 
     }
 }
