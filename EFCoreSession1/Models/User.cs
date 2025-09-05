@@ -28,7 +28,7 @@ namespace EFCoreSession1.Models
         public string PhoneNumber { get; set; }
 
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string UserPassword { get; set; }
 
         [NotMapped]
         public string UserCar { get; set; }

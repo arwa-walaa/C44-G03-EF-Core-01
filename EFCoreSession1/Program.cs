@@ -28,6 +28,17 @@ namespace EFCoreSession1
             //to update database
             //Update-Database -Context "CompanyDBContext"
             #endregion
+            #region Migration
+
+            /*
+             * to remove Migrstion 
+             * 1- you must revert this migration 
+             *   Update-Database 0
+             * 2- then remove migration
+             *  Remove-Migration 
+             * 
+             */
+            #endregion
 
 
 
