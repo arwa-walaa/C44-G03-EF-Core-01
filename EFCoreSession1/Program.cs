@@ -119,15 +119,19 @@ namespace EFCoreSession1
 
 
             #region Relationships Between Clasess 
+            /*
+           * you can make Relation between 2 tables on 3 ways
+           * 1-Navigation Property
+           * 2-Fluent APIs
+           * 3-By Conventions
+           */
+            #endregion
+
+            #region One To One [Total-Total]
 
             #endregion
 
-            /*
-             * you can make Relation between 2 tables on 3 ways
-             * 1-Navigation Property
-             * 2-Fluent APIs
-             * 3-By Conventions
-             */
+
             #endregion
 
         }

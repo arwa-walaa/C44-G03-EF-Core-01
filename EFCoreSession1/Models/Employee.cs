@@ -23,10 +23,10 @@ namespace EFCoreSession1.Models
 
         //FK property
 
-        [ForeignKey("MangerDept")]
-        public int MangerDeptId { get; set; }
+        //[ForeignKey("MangerDept")]
+        //public int MangerDeptId { get; set; }
 
-        public Department  MangerDept { get; set; }=null!; //Total
+        public Department  MangeDept { get; set; }=null!; //Total
 
 
     }

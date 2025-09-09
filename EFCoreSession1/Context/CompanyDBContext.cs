@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFCoreSession1.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace EFCoreSession1.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Models.Employee>()
+                .HasOne(e => e.MangeDept)
+                .WithOne(e => e.Manager)
+                .HasForeignKey<Models.Department>(D=>D.MangerId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

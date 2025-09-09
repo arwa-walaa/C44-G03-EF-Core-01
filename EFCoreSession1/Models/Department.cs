@@ -19,6 +19,9 @@ namespace EFCoreSession1.Models
         public string DeptName { get; set; }
 
         //navigation property
+        //public Employee? Manager { get; set; } = null!; //parial
+
+        public int MangerId { get; set; }
         public Employee? Manager { get; set; } = null!; //parial
 
     }
