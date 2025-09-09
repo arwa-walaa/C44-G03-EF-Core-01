@@ -24,6 +24,43 @@ namespace EFCoreSession1.Context
         optionsBuilder.UseSqlServer("Server=.; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
         }
 
+        #region FluentAPIS
+        //apply mapping with configure APIS must override 'onModelCreating'
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Models.Employee>().HasKey(E=>E.Id);
+
+            //modelBuilder.Entity<Models.Employee>().Property(E => E.Id)
+            //    .UseIdentityColumn(10,10);
+            ////deny constarin 
+
+            //modelBuilder.Entity<Models.Employee>()
+            //    .Property(E => E.Id)
+            //    .ValueGeneratedNever();
+
+             //modelBuilder.Entity<Models.Employee>()
+             //    //.Property("Name") may throw exception if property name is wrong
+             //    .Property(E => E.Name)
+             //    .HasColumnName("EmployeeName")
+             //    .HasColumnType("varchar(50)")
+             //    .HasMaxLength(50)
+             //    .IsRequired(false);//By default true 
+
+            modelBuilder.Entity<Models.Employee>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).HasColumnName("EmployeeName")
+                 .HasColumnType("varchar(50)")
+                 .HasMaxLength(50)
+                 .IsRequired(false);
+                entity.Property(e => e.Salary).HasDefaultValue(8000);
+               
+            });
+
+        }
+
+        #endregion
+
         //if you want a model turned ito table in database 
         //you must use DbSet<T> property
         public DbSet<Models.Employee> Employees { get; set; }

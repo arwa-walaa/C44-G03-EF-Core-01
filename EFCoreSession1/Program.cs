@@ -7,6 +7,9 @@ namespace EFCoreSession1
     {
         static void Main(string[] args)
         {
+            #region Session01
+
+          
             #region DBContext
 
             //CompanyDBContext dbContext = new CompanyDBContext();
@@ -40,7 +43,10 @@ namespace EFCoreSession1
              */
             #endregion
 
+            #endregion
+            #region Session02
 
+            #endregion
 
         }
     }
