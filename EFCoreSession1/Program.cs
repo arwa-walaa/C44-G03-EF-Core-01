@@ -48,7 +48,9 @@ namespace EFCoreSession1
             #region Session02
 
             using CompanyDBContext dbContext = new CompanyDBContext();
+            #region Add New Record
 
+          
             Employee employee = new Employee()
             {
                 Name = "John Doe",
@@ -76,7 +78,44 @@ namespace EFCoreSession1
             //save changes to database
             dbContext.SaveChanges(); //added
             Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //added
+            #endregion
 
+            #region Get Data From Table -select
+
+            //var employee01 = dbContext.Employees.FirstOrDefault(E=>E.Id==1);
+            //Console.WriteLine($"Employee Name : {employee01.Name}");
+
+            #endregion
+
+            #region Update Data in Table
+
+            //var employee01 = dbContext.Employees.FirstOrDefault(E => E.Id == 1);
+            //if (employee01 != null)
+            //{
+            //    employee01.Name = "Ali";
+            //    Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee01).State}"); //Modified
+            //    Console.WriteLine($"Employee Name : {employee01.Name}");
+
+            // dbContext.SaveChanges();
+
+            //}
+
+            #endregion
+
+
+            #region Delete Data From Table
+            var employee03 = dbContext.Employees.FirstOrDefault(E => E.Id == 3);
+
+            if (employee03 != null)
+            {
+                //dbContext.Employees.Remove(employee03);
+                dbContext.Remove(employee03);
+                Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee03).State}"); //Deleted
+                dbContext.SaveChanges();
+            }
+           
+
+            #endregion
 
             #endregion
 
