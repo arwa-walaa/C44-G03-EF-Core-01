@@ -104,19 +104,30 @@ namespace EFCoreSession1
 
 
             #region Delete Data From Table
-            var employee03 = dbContext.Employees.FirstOrDefault(E => E.Id == 3);
+            //var employee03 = dbContext.Employees.FirstOrDefault(E => E.Id == 3);
 
-            if (employee03 != null)
-            {
-                //dbContext.Employees.Remove(employee03);
-                dbContext.Remove(employee03);
-                Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee03).State}"); //Deleted
-                dbContext.SaveChanges();
-            }
-           
+            //if (employee03 != null)
+            //{
+            //    //dbContext.Employees.Remove(employee03);
+            //    dbContext.Remove(employee03);
+            //    Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee03).State}"); //Deleted
+            //    dbContext.SaveChanges();
+            //}
+
 
             #endregion
 
+
+            #region Relationships Between Clasess 
+
+            #endregion
+
+            /*
+             * you can make Relation between 2 tables on 3 ways
+             * 1-Navigation Property
+             * 2-Fluent APIs
+             * 3-By Conventions
+             */
             #endregion
 
         }
