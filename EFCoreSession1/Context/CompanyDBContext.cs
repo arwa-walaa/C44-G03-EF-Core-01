@@ -37,6 +37,8 @@ namespace EFCoreSession1.Context
                 .WithOne(e => e.Manager)
                 .HasForeignKey<Models.Department>(D=>D.MangerId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+
         }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -76,7 +78,11 @@ namespace EFCoreSession1.Context
         //if you want a model turned ito table in database 
         //you must use DbSet<T> property
         public DbSet<Models.Employee> Employees { get; set; }
+
+        public DbSet<Models.Department> Departments { get; set; }
         public DbSet<Models.User> UserTable { get; set; }
+
+        //public DbSet<Models.Address> Addresses { get; set; }
 
     }
 }

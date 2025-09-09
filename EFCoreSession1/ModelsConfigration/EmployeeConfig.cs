@@ -20,6 +20,8 @@ namespace EFCoreSession1.ModelsConfigration
              .HasColumnType("varchar(50)")
              .HasMaxLength(40)
              .IsRequired(false);
+            //one to one [total - total]
+            builder.OwnsOne(E=>E.EmpAddress , Address => Address.WithOwner() );
 
         }
     }

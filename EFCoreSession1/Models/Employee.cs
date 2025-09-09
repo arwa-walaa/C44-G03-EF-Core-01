@@ -29,5 +29,9 @@ namespace EFCoreSession1.Models
         public Department  MangeDept { get; set; }=null!; //Total
 
 
+        //one to one [total - total]
+
+        public Address EmpAddress { get; set; }
+
     }
 }
