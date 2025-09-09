@@ -1,4 +1,5 @@
 ﻿using EFCoreSession1.Context;
+using EFCoreSession1.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreSession1
@@ -9,7 +10,7 @@ namespace EFCoreSession1
         {
             #region Session01
 
-          
+
             #region DBContext
 
             //CompanyDBContext dbContext = new CompanyDBContext();
@@ -21,7 +22,7 @@ namespace EFCoreSession1
             //    dbContext.Dispose();
             //}
 
-            using CompanyDBContext dbContext = new CompanyDBContext();
+            //using CompanyDBContext dbContext = new CompanyDBContext();
 
             //dbContext.Database.Migrate();
             //to apply migration you must install the following nuget package
@@ -45,6 +46,37 @@ namespace EFCoreSession1
 
             #endregion
             #region Session02
+
+            using CompanyDBContext dbContext = new CompanyDBContext();
+
+            Employee employee = new Employee()
+            {
+                Name = "John Doe",
+                Age = 30,
+                Salary = 9000m
+            };
+            dbContext.ChangeTracker.QueryTrackingBehavior=QueryTrackingBehavior.TrackAll;//default
+            dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+            //add this employee to table Employees
+
+            // 1)
+
+            dbContext.Employees.Add(employee);
+            // 2)
+
+            dbContext.Set<Employee>().Add(employee);
+
+            // 3)
+
+            dbContext.Add(employee);
+            //detached, unchanged, deleted, modified, added
+            Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //detached
+
+            //save changes to database
+            dbContext.SaveChanges(); //added
+            Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //added
+
 
             #endregion
 
