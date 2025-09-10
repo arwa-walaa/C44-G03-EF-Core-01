@@ -18,10 +18,12 @@ namespace Assignment.Models
         [MaxLength(100)]
         public string Name { get; set; }
 
-     
+      
         public int Ins_ID { get; set; }
 
         [Column("HiringDate")]
         public DateTime HiringDate { get; set; }
+
+        public virtual Instructor Instructor { get; set; }
     }
 }

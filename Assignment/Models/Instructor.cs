@@ -11,7 +11,6 @@ namespace Assignment.Models
     public class Instructor
     {
         [Key]
-      
         public int ID { get; set; }
 
         [Required]
@@ -32,5 +31,7 @@ namespace Assignment.Models
 
       
         public int Dept_ID { get; set; }
+
+        public virtual Department Department { get; set; }
     }
 }

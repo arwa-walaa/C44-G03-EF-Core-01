@@ -16,7 +16,7 @@ namespace Assignment.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
+            optionsBuilder.UseSqlServer("Server=ARWA\\SQLEXPRESS01; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
         }
         public DbSet<Models.Student> Students { get; set; }
         public DbSet<Models.Department> Departments { get; set; }
@@ -26,6 +26,20 @@ namespace Assignment.Context
         public DbSet<Models.Stud_Course> StudentCourses { get; set; }
         public DbSet<Models.Course_Inst> CourseInstructors { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>()
+            .HasOne(d => d.Instructor)
+            .WithOne(i => i.Department) // <-- Use WithOne for one-to-one
+            .HasForeignKey<Department>(d => d.Ins_ID)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Instructor>()
+              .HasOne(i => i.Department)
+              .WithOne(d => d.Instructor) // <-- Use WithOne for one-to-one
+              .HasForeignKey<Instructor>(i => i.Dept_ID)
+              .OnDelete(DeleteBehavior.NoAction);
+        }
 
     }
 }
