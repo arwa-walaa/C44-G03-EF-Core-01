@@ -140,10 +140,13 @@ namespace EFCoreSession1
 
             #region Session03
 
-            #region Many to Many RS
+            #region Many to One RS
 
             #endregion
 
+            #region Many to Many 
+
+            #endregion
             #endregion
 
         }

@@ -44,13 +44,26 @@ namespace EFCoreSession1.Context
             #endregion
             #region OneToMany
 
-        
+
 
             //modelBuilder.Entity<Models.Department>()
             //    .HasMany(d => d.Employees)
             //    .WithOne(e => e.EmployeeDepartment)
             //    .HasForeignKey(e => e.EmpDeptId);
-               
+
+
+
+            #endregion
+
+            #region Many to Many RS
+
+            modelBuilder.Entity<Models.Student>()
+                .HasMany(s => s.Courses)
+                .WithMany(c => c.Students)
+                .UsingEntity<CourseStudent>()
+                .HasKey(cs => new { cs.StudentId, cs.CourseId }); //composite key
+
+
 
 
             #endregion
@@ -98,6 +111,9 @@ namespace EFCoreSession1.Context
 
         public DbSet<Models.Department> Departments { get; set; }
         public DbSet<Models.User> UserTable { get; set; }
+
+        public DbSet<Models.Student> Students { get; set; }
+        public DbSet<Models.Course> Courses { get; set; }
 
         //public DbSet<Models.Address> Addresses { get; set; }
 
