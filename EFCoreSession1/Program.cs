@@ -1,4 +1,5 @@
 ﻿using EFCoreSession1.Context;
+using EFCoreSession1.Data;
 using EFCoreSession1.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -188,6 +189,19 @@ namespace EFCoreSession1
 
 
             #endregion
+            #region Dynamic Data Seeding
+
+            bool flag = CompanyDBContextSeed.seed(dbContext);
+            if (flag)
+            {
+                Console.WriteLine("Data Seed Done");
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+            }
+            #endregion
+
 
             #endregion
             #endregion

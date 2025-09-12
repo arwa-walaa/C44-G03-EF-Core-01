@@ -18,13 +18,7 @@ namespace EFCoreSession1.Models
         public decimal Salary { get; set; }
         public int Age { get; set; }
 
-        //navigation property
-        //represent the realtionship of 1
-
-        //FK property
-
-        //[ForeignKey("MangerDept")]
-        //public int MangerDeptId { get; set; }
+     
 
         [InverseProperty(nameof(Department.Manager))]
         public Department  MangeDept { get; set; }=null!; //Total
@@ -38,7 +32,7 @@ namespace EFCoreSession1.Models
 
         //many to one 
         [ForeignKey("EmployeeDepartment")]
-        public int EmpDeptId { get; set; }
+        public int? EmpDeptId { get; set; }
 
         [InverseProperty(nameof(Department.Employees))]
         public Department EmployeeDepartment { get; set; }
