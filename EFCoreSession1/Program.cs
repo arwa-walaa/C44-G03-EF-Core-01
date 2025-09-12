@@ -2,6 +2,7 @@
 using EFCoreSession1.Data;
 using EFCoreSession1.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace EFCoreSession1
 {
@@ -204,6 +205,47 @@ namespace EFCoreSession1
 
 
             #endregion
+
+            #region Loading Related Data
+
+            //var Emp01 = dbContext.Employees.FirstOrDefault(E=>E.Id==4);
+            //if (Emp01 != null)
+            //{
+            //    Console.WriteLine($"Employee Name: {Emp01.Name} " );
+            //    Console.WriteLine($"Department Number: {Emp01.EmpDeptId} ");
+            //    Console.WriteLine($"Department Name: {Emp01.MangeDept?.DeptName} ");
+            //}
+
+            //var EmpDept = (from D in dbContext.Departments
+            //              where D.DebtId== Emp01.EmpDeptId
+            //              select D).FirstOrDefault();
+            //Console.WriteLine($"Department Name: {EmpDept.DeptName} ");
+
+
+            #region Eager Loading
+
+            //var Emp01 = dbContext.Employees.Include(E=>E.EmployeeDepartment).FirstOrDefault(E => E.Id == 4);
+
+            //if (Emp01 != null)
+            //{
+            //    Console.WriteLine($"Employee Name: {Emp01.Name} ");
+            //    Console.WriteLine($"Department Number: {Emp01.EmpDeptId} ");
+            //    Console.WriteLine($"Department Name: {Emp01.MangeDept?.DeptName} ");
+            //}
+
+            //get employee with id=6 and department which is manged by this Employee
+            var Emp06 = dbContext.Employees.Include(E => E.EmployeeDepartment).FirstOrDefault(E => E.Id == 6);
+            if (Emp06 != null)
+            {
+                Console.WriteLine($"Employee Name: {Emp06.Name} ");
+                Console.WriteLine($"Department Number: {Emp06.MangeDept.DebtId} ");
+                Console.WriteLine($"Department Name: {Emp06.MangeDept?.DeptName} ");
+            }
+
+            #endregion
+
+            #endregion
+
             #endregion
 
         }
