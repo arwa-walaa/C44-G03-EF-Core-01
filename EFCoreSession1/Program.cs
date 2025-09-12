@@ -234,13 +234,47 @@ namespace EFCoreSession1
             //}
 
             //get employee with id=6 and department which is manged by this Employee
-            var Emp06 = dbContext.Employees.Include(E => E.EmployeeDepartment).FirstOrDefault(E => E.Id == 6);
-            if (Emp06 != null)
+            //var Emp06 = dbContext.Employees.Include(E => E.EmployeeDepartment).FirstOrDefault(E => E.Id == 6);
+            //if (Emp06 != null)
+            //{
+            //    Console.WriteLine($"Employee Name: {Emp06.Name} ");
+            //    Console.WriteLine($"Department Number: {Emp06.MangeDept.DebtId} ");
+            //    Console.WriteLine($"Department Name: {Emp06.MangeDept?.DeptName} ");
+            //}
+
+            #endregion
+
+            #region Explicit Loading
+
+            #region Ex01
+            //var Emp01 = dbContext.Employees.FirstOrDefault(E => E.Id == 4);
+            //if (Emp01 != null)
+            //{
+            //    Console.WriteLine($"Employee Name: {Emp01.Name} ");
+            //    Console.WriteLine($"Department Number: {Emp01.EmpDeptId} ");
+
+            //    dbContext.Entry(Emp01).Reference(E=>E.EmployeeDepartment).Load();
+            //    //refrence methoud alowed with one navigation property
+            //    Console.WriteLine($"Department Name: {Emp01.EmployeeDepartment?.DeptName} ");
+            //}
+            #endregion
+
+            #region Ex02
+            var Dep01 = dbContext.Departments.FirstOrDefault(D => D.DebtId == 3);
+            if (Dep01 != null)
             {
-                Console.WriteLine($"Employee Name: {Emp06.Name} ");
-                Console.WriteLine($"Department Number: {Emp06.MangeDept.DebtId} ");
-                Console.WriteLine($"Department Name: {Emp06.MangeDept?.DeptName} ");
+                Console.WriteLine(Dep01.DeptName);
             }
+            //collection work with many nav property
+            //dbContext.Entry(Dep01).Collection(D => D.Employees).Load();
+            dbContext.Entry(Dep01).Collection(D => D.Employees).Query().Where(E=>E.Age<30).Load();
+
+            foreach (var item in Dep01.Employees)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            #endregion
 
             #endregion
 
