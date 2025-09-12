@@ -8,6 +8,8 @@ namespace EFCoreSession1
     {
         static void Main(string[] args)
         {
+            using CompanyDBContext dbContext = new CompanyDBContext();
+
             #region Session01
 
 
@@ -47,37 +49,37 @@ namespace EFCoreSession1
             #endregion
             #region Session02
 
-            using CompanyDBContext dbContext = new CompanyDBContext();
+            //using CompanyDBContext dbContext = new CompanyDBContext();
             #region Add New Record
 
-          
-            Employee employee = new Employee()
-            {
-                Name = "John Doe",
-                Age = 30,
-                Salary = 9000m
-            };
-            dbContext.ChangeTracker.QueryTrackingBehavior=QueryTrackingBehavior.TrackAll;//default
-            dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
-            //add this employee to table Employees
+            //Employee employee = new Employee()
+            //{
+            //    Name = "John Doe",
+            //    Age = 30,
+            //    Salary = 9000m
+            //};
+            //dbContext.ChangeTracker.QueryTrackingBehavior=QueryTrackingBehavior.TrackAll;//default
+            //dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
-            // 1)
+            ////add this employee to table Employees
 
-            dbContext.Employees.Add(employee);
-            // 2)
+            //// 1)
 
-            dbContext.Set<Employee>().Add(employee);
+            //dbContext.Employees.Add(employee);
+            //// 2)
 
-            // 3)
+            //dbContext.Set<Employee>().Add(employee);
 
-            dbContext.Add(employee);
-            //detached, unchanged, deleted, modified, added
-            Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //detached
+            //// 3)
+
+            //dbContext.Add(employee);
+            ////detached, unchanged, deleted, modified, added
+            //Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //detached
 
             //save changes to database
-            dbContext.SaveChanges(); //added
-            Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //added
+            //dbContext.SaveChanges(); //added
+            //Console.WriteLine($"Employee State : {dbContext.Entry<Employee>(employee).State}"); //added
             #endregion
 
             #region Get Data From Table -select
@@ -145,6 +147,47 @@ namespace EFCoreSession1
             #endregion
 
             #region Many to Many 
+
+            #endregion
+
+
+
+            #region Data Seed
+
+            /*
+             * 3Ways
+             * 1-Manual Data Seeding
+             * 2-Migration Data Seeding
+             * 3-Dynamic Data Seeding
+             * */
+            #region Manual Data Seeding
+
+            //Department department1 = new Department()
+            //    {
+            //    DeptName = "IT",
+
+            //     };
+            //dbContext.Departments.Add(department1);
+            //dbContext.SaveChanges();
+
+            //List<Department> departments = new List<Department>()
+            //{
+            //    new Department(){ DeptName="HR"},
+            //    new Department(){ DeptName="Finance"},
+            //    new Department(){ DeptName="Marketing"},
+            //    new Department(){ DeptName="Sales"},
+            //};
+            //dbContext.Departments.AddRange(departments);
+            //dbContext.SaveChanges();
+
+            #endregion
+
+
+            #region Migration Data Seeding
+
+
+
+            #endregion
 
             #endregion
             #endregion

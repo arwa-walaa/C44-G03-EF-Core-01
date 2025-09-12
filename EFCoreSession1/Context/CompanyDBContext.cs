@@ -68,6 +68,18 @@ namespace EFCoreSession1.Context
 
             #endregion
 
+            #region Seed data Through Migration
+
+            //modelBuilder.Entity<Models.Department>().HasData(
+            //    new Models.Department() { DebtId = 8, DeptName = "IT" },
+            //    new Models.Department() { DebtId = 7, DeptName = "HR" },
+            //    new Models.Department() { DebtId = 6, DeptName = "Sales" }
+            //    );
+
+
+
+            #endregion
+
 
         }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -3,6 +3,7 @@ using EFCoreSession1.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreSession1.Migrations
 {
     [DbContext(typeof(CompanyDBContext))]
-    partial class CompanyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250912084206_updateFKEmp")]
+    partial class updateFKEmp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,23 +81,6 @@ namespace EFCoreSession1.Migrations
                         .HasFilter("[MangerId] IS NOT NULL");
 
                     b.ToTable("Departments");
-
-                    b.HasData(
-                        new
-                        {
-                            DebtId = 8,
-                            DeptName = "IT"
-                        },
-                        new
-                        {
-                            DebtId = 7,
-                            DeptName = "HR"
-                        },
-                        new
-                        {
-                            DebtId = 6,
-                            DeptName = "Sales"
-                        });
                 });
 
             modelBuilder.Entity("EFCoreSession1.Models.Employee", b =>

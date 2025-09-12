@@ -21,7 +21,7 @@ namespace EFCoreSession1.Models
         //navigation property
         //public Employee? Manager { get; set; } = null!; //parial
 
-        public int MangerId { get; set; }
+        public int? MangerId { get; set; }
         [InverseProperty(nameof(Employee.MangeDept))]
         public Employee? Manager { get; set; }
         //one to many
