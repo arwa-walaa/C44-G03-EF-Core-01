@@ -28,6 +28,9 @@ namespace Assignment.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region RelationShops&Data
+
+           
             modelBuilder.Entity<Student>().HasKey(s => s.ID);
             modelBuilder.Entity<Department>().HasKey(d => d.ID);
             modelBuilder.Entity<Course>().HasKey(c => c.ID);
@@ -110,6 +113,53 @@ namespace Assignment.Context
             modelBuilder.Entity<Stud_Course>()
                 .Property(sc => sc.Grade)
                 .HasPrecision(5, 2);
+            #endregion
+
+            #region Data Migrate Seed
+
+            // Seed Topics
+            modelBuilder.Entity<Topic>().HasData(
+                new Topic { ID = 101, Name = "Programming (Seed)" },
+                new Topic { ID = 102, Name = "Databases (Seed)" }
+            );
+
+            // Seed Departments
+            modelBuilder.Entity<Department>().HasData(
+                new Department { ID = 101, Name = "Computer Science (Seed)", Ins_ID = 101, HiringDate = new DateTime(2022, 1, 1) },
+                new Department { ID = 102, Name = "Information Systems (Seed)", Ins_ID = 102, HiringDate = new DateTime(2023, 1, 1) }
+            );
+
+            // Seed Instructors
+            modelBuilder.Entity<Instructor>().HasData(
+                new Instructor { ID = 101, Name = "Carol", Salary = 6000, Address = "111 Seed St", HourRate = 120, Bouns = 600, Dept_ID = 101 },
+                new Instructor { ID = 102, Name = "Dave", Salary = 5500, Address = "222 Seed Ave", HourRate = 110, Bouns = 550, Dept_ID = 102 }
+            );
+
+            // Seed Courses
+            modelBuilder.Entity<Course>().HasData(
+                new Course { ID = 101, Name = "EF Core Seed", Description = "Seeded C# Course", Top_ID = 101, Duration = 40 },
+                new Course { ID = 102, Name = "SQL Seed", Description = "Seeded SQL Course", Top_ID = 102, Duration = 35 }
+            );
+
+            // Seed Students
+            modelBuilder.Entity<Student>().HasData(
+                new Student { ID = 101, FName = "Mike", LName = "Seedman", Address = "333 Seed Blvd", Age = 23, Dep_Id = 101 },
+                new Student { ID = 102, FName = "Sara", LName = "Seeder", Address = "444 Seed Rd", Age = 24, Dep_Id = 102 }
+            );
+
+            // Seed Stud_Course (join table)
+            modelBuilder.Entity<Stud_Course>().HasData(
+                new Stud_Course { stud_ID = 101, Course_ID = 101, Grade = 90 },
+                new Stud_Course { stud_ID = 102, Course_ID = 102, Grade = 85 }
+            );
+
+            // Seed Course_Inst (join table)
+            modelBuilder.Entity<Course_Inst>().HasData(
+                new Course_Inst { inst_ID = 101, Course_ID = 101, evaluate = "Seeded Excellent" },
+                new Course_Inst { inst_ID = 102, Course_ID = 102, evaluate = "Seeded Good" }
+            );
+
+            #endregion
         }
 
     }
