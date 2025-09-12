@@ -1,5 +1,7 @@
 ﻿using Assignment.Context;
+using Assignment.Data;
 using Assignment.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment
 {
@@ -60,8 +62,23 @@ namespace Assignment
 
             #endregion
 
-        
-         
+
+            #region Dynamic Data Seed
+
+            
+            
+            bool flag = ITIDbContextSeed.seed(context);
+            if (flag)
+            {
+                Console.WriteLine("Data Seed Done");
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+            }
+
+            #endregion
+
 
         }
     }
