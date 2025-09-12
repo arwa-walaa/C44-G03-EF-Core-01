@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,11 @@ namespace EFCoreSession1.ModelsConfigration
              .IsRequired(false);
             //one to one [total - total]
             builder.OwnsOne(E=>E.EmpAddress , Address => Address.WithOwner() );
+
+            //many to one
+            builder.HasOne(e => e.EmployeeDepartment)
+            .WithMany(d => d.Employees)
+            .HasForeignKey(e => e.EmpDeptId);
 
         }
     }

@@ -133,8 +133,16 @@ namespace EFCoreSession1
 
             #endregion
 
-          
 
+
+
+            #endregion
+
+            #region Session03
+
+            #region Many to Many RS
+
+            #endregion
 
             #endregion
 

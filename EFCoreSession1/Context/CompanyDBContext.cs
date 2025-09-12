@@ -23,7 +23,7 @@ namespace EFCoreSession1.Context
         {
          //optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=CompanyRoute;Integrated Security=True);
         
-        optionsBuilder.UseSqlServer("Server=.; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
+        optionsBuilder.UseSqlServer("Server=ARWA\\SQLEXPRESS01; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
         }
 
         #region FluentAPIS
@@ -31,12 +31,29 @@ namespace EFCoreSession1.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region One to One
+
+           
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.Entity<Models.Employee>()
                 .HasOne(e => e.MangeDept)
                 .WithOne(e => e.Manager)
                 .HasForeignKey<Models.Department>(D=>D.MangerId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            #endregion
+            #region OneToMany
+
+        
+
+            //modelBuilder.Entity<Models.Department>()
+            //    .HasMany(d => d.Employees)
+            //    .WithOne(e => e.EmployeeDepartment)
+            //    .HasForeignKey(e => e.EmpDeptId);
+               
+
+
+            #endregion
 
 
         }

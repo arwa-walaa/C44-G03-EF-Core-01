@@ -26,12 +26,22 @@ namespace EFCoreSession1.Models
         //[ForeignKey("MangerDept")]
         //public int MangerDeptId { get; set; }
 
+        [InverseProperty(nameof(Department.Manager))]
         public Department  MangeDept { get; set; }=null!; //Total
 
 
         //one to one [total - total]
 
         public Address EmpAddress { get; set; }
+
+
+
+        //many to one 
+        [ForeignKey("EmployeeDepartment")]
+        public int EmpDeptId { get; set; }
+
+        [InverseProperty(nameof(Department.Employees))]
+        public Department EmployeeDepartment { get; set; }
 
     }
 }

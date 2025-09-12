@@ -22,7 +22,14 @@ namespace EFCoreSession1.Models
         //public Employee? Manager { get; set; } = null!; //parial
 
         public int MangerId { get; set; }
-        public Employee? Manager { get; set; } = null!; //parial
+        [InverseProperty(nameof(Employee.MangeDept))]
+        public Employee? Manager { get; set; }
+        //one to many
+
+        [InverseProperty(nameof(Employee.EmployeeDepartment))]
+        public ICollection< Employee> Employees { get; set; } =new HashSet< Employee >();
+
+      
 
     }
 }
