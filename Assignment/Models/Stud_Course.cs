@@ -10,14 +10,12 @@ namespace Assignment.Models
 {
     public class Stud_Course
     {
-        [Key]
-        public int Id { get; set; }
         public int stud_ID { get; set; }
-
-      
         public int Course_ID { get; set; }
-
-        [Column(TypeName = "decimal(5,2)")]
         public decimal Grade { get; set; }
+
+        // Navigation properties
+        public virtual Student Student { get; set; }
+        public virtual Course Course { get; set; }
     }
 }

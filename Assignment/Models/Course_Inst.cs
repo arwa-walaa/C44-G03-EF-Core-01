@@ -10,15 +10,12 @@ namespace Assignment.Models
 {
     public class Course_Inst
     {
-
-        [Key]
-        public int ID { get; set; }
-
         public int inst_ID { get; set; }
-
         public int Course_ID { get; set; }
-
-        [MaxLength(500)]
         public string evaluate { get; set; }
+
+        // Navigation properties
+        public virtual Instructor Instructor { get; set; }
+        public virtual Course Course { get; set; }
     }
 }

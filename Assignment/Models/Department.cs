@@ -10,20 +10,14 @@ namespace Assignment.Models
 {
     public class Department
     {
-        [Key]
-      
         public int ID { get; set; }
-
-        [Required]
-        [MaxLength(100)]
         public string Name { get; set; }
-
-      
         public int Ins_ID { get; set; }
-
-        [Column("HiringDate")]
         public DateTime HiringDate { get; set; }
 
+        // Navigation properties
         public virtual Instructor Instructor { get; set; }
+        
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

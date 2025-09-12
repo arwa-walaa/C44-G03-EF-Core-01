@@ -10,21 +10,16 @@ namespace Assignment.Models
 {
     public class Course
     {
-        [Key]
-      
         public int ID { get; set; }
-
         public int Duration { get; set; }
-
-        [Required]
-        [MaxLength(100)]
         public string Name { get; set; }
-
-        [MaxLength(500)]
         public string Description { get; set; }
-
-       
         public int Top_ID { get; set; }
-    
-}
+
+        // Navigation properties
+        public virtual Topic Topic { get; set; }
+        public virtual ICollection<Stud_Course> StudentCourses { get; set; }
+        public virtual ICollection<Course_Inst> CourseInstructors { get; set; }
+
+    }
 }

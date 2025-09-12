@@ -10,12 +10,10 @@ namespace Assignment.Models
 {
     public class Topic
     {
-        [Key]
-      
         public int ID { get; set; }
-
-        [Required]
-        [MaxLength(100)]
         public string Name { get; set; }
+
+        // Navigation properties
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }

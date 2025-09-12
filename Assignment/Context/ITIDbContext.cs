@@ -16,7 +16,7 @@ namespace Assignment.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=ARWA\\SQLEXPRESS01; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
+            optionsBuilder.UseSqlServer("Server=ARWA\\SQLEXPRESS01; Database= ITI; Trusted_Connection=True; TrustServerCertificate=True; ");
         }
         public DbSet<Models.Student> Students { get; set; }
         public DbSet<Models.Department> Departments { get; set; }
@@ -28,6 +28,17 @@ namespace Assignment.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Student>().HasKey(s => s.ID);
+            modelBuilder.Entity<Department>().HasKey(d => d.ID);
+            modelBuilder.Entity<Course>().HasKey(c => c.ID);
+            modelBuilder.Entity<Instructor>().HasKey(i => i.ID);
+            modelBuilder.Entity<Topic>().HasKey(t => t.ID);
+
+            // Configure composite keys for junction tables
+            modelBuilder.Entity<Stud_Course>().HasKey(sc => new { sc.stud_ID, sc.Course_ID });
+            modelBuilder.Entity<Course_Inst>().HasKey(ci => new { ci.inst_ID, ci.Course_ID });
+
+
             modelBuilder.Entity<Department>()
             .HasOne(d => d.Instructor)
             .WithOne(i => i.Department) // <-- Use WithOne for one-to-one
@@ -39,6 +50,66 @@ namespace Assignment.Context
               .WithOne(d => d.Instructor) // <-- Use WithOne for one-to-one
               .HasForeignKey<Instructor>(i => i.Dept_ID)
               .OnDelete(DeleteBehavior.NoAction);
+
+            // Student - Department (Many-to-One)
+            modelBuilder.Entity<Student>()
+                .HasOne(s => s.Department)
+                .WithMany(d => d.Students)
+                .HasForeignKey(s => s.Dep_Id);
+               
+
+
+          
+
+            // Course - Topic (Many-to-One)
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.Topic)
+                .WithMany(t => t.Courses)
+                .HasForeignKey(c => c.Top_ID);
+
+
+            // Student - Course (Many-to-Many through Stud_Course)
+            modelBuilder.Entity<Stud_Course>()
+                .HasOne(sc => sc.Student)
+                .WithMany(s => s.StudentCourses)
+                .HasForeignKey(sc => sc.stud_ID);
+               
+
+            modelBuilder.Entity<Stud_Course>()
+                .HasOne(sc => sc.Course)
+                .WithMany(c => c.StudentCourses)
+                .HasForeignKey(sc => sc.Course_ID)
+               ;
+
+            // Instructor - Course (Many-to-Many through Course_Inst)
+            modelBuilder.Entity<Course_Inst>()
+                .HasOne(ci => ci.Instructor)
+                .WithMany(i => i.CourseInstructors)
+                .HasForeignKey(ci => ci.inst_ID)
+                ;
+
+            modelBuilder.Entity<Course_Inst>()
+                .HasOne(ci => ci.Course)
+                .WithMany(c => c.CourseInstructors)
+                .HasForeignKey(ci => ci.Course_ID)
+                ;
+
+            // Configure column properties
+            modelBuilder.Entity<Instructor>()
+                .Property(i => i.Salary)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Instructor>()
+                .Property(i => i.HourRate)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Instructor>()
+                .Property(i => i.Bouns)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Stud_Course>()
+                .Property(sc => sc.Grade)
+                .HasPrecision(5, 2);
         }
 
     }

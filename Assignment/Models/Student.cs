@@ -10,26 +10,15 @@ namespace Assignment.Models
 {
     public class Student
     {
-        [Key]
-     
         public int ID { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        [Column("FName")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        [Column("LName")]
-        public string LastName { get; set; }
-
-        [MaxLength(200)]
+        public string FName { get; set; }
+        public string LName { get; set; }
         public string Address { get; set; }
-
         public int Age { get; set; }
 
-        
+        // Navigation properties
         public int Dep_Id { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual ICollection<Stud_Course> StudentCourses { get; set; }
     }
 }
