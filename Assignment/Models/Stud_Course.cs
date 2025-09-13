@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment.Models
+{
+    public class Stud_Course
+    {
+        public int stud_ID { get; set; }
+        public int Course_ID { get; set; }
+        public decimal Grade { get; set; }
+
+        // Navigation properties
+        public virtual Student Student { get; set; }
+        public virtual Course Course { get; set; }
+    }
+}
