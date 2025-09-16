@@ -23,7 +23,8 @@ namespace EFCoreSession1.Context
         {
          //optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=CompanyRoute;Integrated Security=True);
         
-        optionsBuilder.UseSqlServer("Server=ARWA\\SQLEXPRESS01; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ");
+        optionsBuilder.UseSqlServer("Server=ARWA\\SQLEXPRESS01; Database= CompanyRoute; Trusted_Connection=True; TrustServerCertificate=True; ")
+                .UseLazyLoadingProxies(); //enable lazy loading
         }
 
         #region FluentAPIS

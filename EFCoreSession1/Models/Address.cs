@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace EFCoreSession1.Models
 {
     //[Owned]
-    internal class Address
+    public class Address
     {
         public string? City { get; set; }   
         

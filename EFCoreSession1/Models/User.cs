@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EFCoreSession1.Models
 {
     [Table("Users")]
-    internal class User
+    public class User
     {
         //data Annotation
         [Key]

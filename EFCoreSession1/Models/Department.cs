@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace EFCoreSession1.Models
 {
@@ -23,11 +25,11 @@ namespace EFCoreSession1.Models
 
         public int? MangerId { get; set; }
         [InverseProperty(nameof(Employee.MangeDept))]
-        public Employee? Manager { get; set; }
+        public virtual Employee? Manager { get; set; }
         //one to many
 
         [InverseProperty(nameof(Employee.EmployeeDepartment))]
-        public ICollection< Employee> Employees { get; set; } =new HashSet< Employee >();
+        public virtual ICollection< Employee> Employees { get; set; } =new HashSet< Employee >();
 
       
 

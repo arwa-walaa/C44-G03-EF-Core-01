@@ -3,9 +3,12 @@ using EFCoreSession1.Data;
 using EFCoreSession1.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Runtime.CompilerServices;
+
 
 namespace EFCoreSession1
 {
+ 
     internal class Program
     {
         static void Main(string[] args)
@@ -267,7 +270,7 @@ namespace EFCoreSession1
             }
             //collection work with many nav property
             //dbContext.Entry(Dep01).Collection(D => D.Employees).Load();
-            dbContext.Entry(Dep01).Collection(D => D.Employees).Query().Where(E=>E.Age<30).Load();
+            dbContext.Entry(Dep01).Collection(D => D.Employees).Query().Where(E => E.Age < 30).Load();
 
             foreach (var item in Dep01.Employees)
             {
@@ -277,6 +280,28 @@ namespace EFCoreSession1
             #endregion
 
             #endregion
+
+            #endregion
+
+            #endregion
+
+            #region Session04
+
+            #region Lazy Loading
+
+            /*
+             * 1- install package Microsoft.EntityFrameworkCore.Proxies
+             * 2- enable it in OnConfiguring method
+             * 3-make navigation property virtual and clasess must be public 
+             
+             */
+            var Emp01 = dbContext.Employees.FirstOrDefault(E => E.Id == 4);
+            if (Emp01 != null)
+            {
+                Console.WriteLine($"Employee Name: {Emp01.Name} ");
+                Console.WriteLine($"Department Number: {Emp01.EmpDeptId} ");
+                Console.WriteLine($"Department Name: {Emp01.EmployeeDepartment?.DeptName} ");
+            }
 
             #endregion
 

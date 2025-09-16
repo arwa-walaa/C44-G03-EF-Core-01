@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace EFCoreSession1.Models
 {
@@ -21,12 +24,12 @@ namespace EFCoreSession1.Models
      
 
         [InverseProperty(nameof(Department.Manager))]
-        public Department  MangeDept { get; set; }=null!; //Total
+        public virtual  Department  MangeDept { get; set; }=null!; //Total
 
 
         //one to one [total - total]
 
-        public Address EmpAddress { get; set; }
+        public virtual Address EmpAddress { get; set; }
 
 
 
@@ -35,7 +38,7 @@ namespace EFCoreSession1.Models
         public int? EmpDeptId { get; set; }
 
         [InverseProperty(nameof(Department.Employees))]
-        public Department EmployeeDepartment { get; set; }
+        public virtual Department EmployeeDepartment { get; set; }
 
     }
 }

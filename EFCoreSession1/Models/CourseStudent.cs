@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EFCoreSession1.Models
 {
-    internal class CourseStudent
+    public class CourseStudent
     {
         public int StudentId { get; set; }  
        

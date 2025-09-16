@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace EFCoreSession1.Models
 {
-    internal class Student
+    public class Student
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Course> Courses { get; set; } = new HashSet<Course>();
+        public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
     }
 
 }
