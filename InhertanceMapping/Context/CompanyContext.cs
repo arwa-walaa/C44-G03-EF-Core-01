@@ -15,10 +15,39 @@ namespace InhertanceMapping.Context
              ; 
         }
 
-        #region Table Per Concrete Type [TPCT]
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            #region Table Per Hierarchy [TPH]
+            modelBuilder.Entity<FullTimeEmployee>()
+                .HasBaseType<Employee>();
+            modelBuilder.Entity<PartTimeEmployee>()
+                .HasBaseType<Employee>();
 
-        public DbSet<FullTimeEmployee> FullTimeEmployees { get; set; }
-        public DbSet<PartTimeEmployee> PartTimeEmployees { get; set; }
+            modelBuilder.Entity<Employee>()
+                .HasDiscriminator<string>("EmployeeType")
+                .HasValue<FullTimeEmployee>("FTE")
+                .HasValue<PartTimeEmployee>("PTE");
+
+            #endregion
+
+        }
+
+
+
+        #region 1.Table Per Concrete Type [TPCT]
+
+
+        //public DbSet<FullTimeEmployee> FullTimeEmployees { get; set; }
+        //public DbSet<PartTimeEmployee> PartTimeEmployees { get; set; }
+
+
+        #endregion
+
+        #region 2.Table Per Heirarechy
+
+        public DbSet<Employee> Employees { get; set; }
+        //public DbSet<FullTimeEmployee> FullTimeEmployees { get; set; }
+        //public DbSet<PartTimeEmployee> PartTimeEmployees { get; set; }
 
 
         #endregion
