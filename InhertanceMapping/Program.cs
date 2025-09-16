@@ -65,25 +65,49 @@ namespace InhertanceMapping
             //context.Add(pte);
             //context.SaveChanges();
 
-            var Emps = from E in context.Employees
-                      select E;
+            //var Emps = from E in context.Employees
+            //          select E;
 
-            foreach (var emp in Emps.OfType<FullTimeEmployee>())
-                Console.WriteLine(emp.Name);
+            //foreach (var emp in Emps.OfType<FullTimeEmployee>())
+            //    Console.WriteLine(emp.Name);
+
+
+
+
+
+            #endregion
+            #region Table Per Type [TPT]
+            //FullTimeEmployee fte = new FullTimeEmployee()
+            //{
+            //    Name = "Arwa",
+            //    Address = "Cairo",
+            //    Age = 30,
+            //    Salary = 10000,
+            //    StartDate = DateTime.Now
+            //};
+            //PartTimeEmployee pte = new PartTimeEmployee()
+            //{
+            //    Name = "Mohamed",
+            //    Address = "Giza",
+            //    Age = 28,
+            //    HourlyRate = 100,
+            //    CountOfHours = 160
+            //};
+
+            //context.Add(fte);
+            //context.Add(pte);
+            //context.SaveChanges();
+
+            var Emps = (from E in context.Employees
+                       select E).ToList();
+            foreach(var E in Emps.OfType<PartTimeEmployee>()) {
+                Console.WriteLine(E.Name);
+            }
+
+            #endregion
+
+            #endregion
         }
-
-
-        //var FET = (from fe in context.FullTimeEmployees
-        //           select fe).FirstOrDefault();
-        //var PTE = context.PartTimeEmployees.FirstOrDefault();
-        //Console.WriteLine($"FTE: {FET.Name}, Salary: {FET.Salary}, StartDate: {FET.StartDate}");
-        //Console.WriteLine($"PTE: {PTE.Name}, HourlyRate: {PTE.HourlyRate}, CountOfHours: {PTE.CountOfHours}");
-
-
-
-        #endregion
-
-        #endregion
 
     }
     }
