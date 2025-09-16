@@ -295,13 +295,68 @@ namespace EFCoreSession1
              * 3-make navigation property virtual and clasess must be public 
              
              */
-            var Emp01 = dbContext.Employees.FirstOrDefault(E => E.Id == 4);
-            if (Emp01 != null)
+            //var Emp01 = dbContext.Employees.FirstOrDefault(E => E.Id == 4);
+            //if (Emp01 != null)
+            //{
+            //    Console.WriteLine($"Employee Name: {Emp01.Name} ");
+            //    Console.WriteLine($"Department Number: {Emp01.EmpDeptId} ");
+            //    Console.WriteLine($"Department Name: {Emp01.EmployeeDepartment?.DeptName} ");
+            //}
+
+            #endregion
+
+            #region Join Category [LINQ]
+
+            #region Get Department that has Employees
+
+            //var result= dbContext.Departments.Join(dbContext.Employees,
+            //    D => D.DebtId,
+            //    E => E.EmpDeptId,
+            //    (D, E) => new
+            //    { 
+            //        EmpName = E.Name,
+            //        EmpID=E.Id,
+            //        DeptId=D.DebtId,
+            //         DeptName = D.DeptName,
+            //    }).ToList();
+
+            //var result = from D in dbContext.Departments
+            //           join E in dbContext.Employees
+            //           on D.DebtId equals E.EmpDeptId
+            //           select new
+            //           {
+            //               EmpName = E.Name,
+            //               EmpID = E.Id,
+            //               DeptId = D.DebtId,
+            //               DeptName = D.DeptName,
+
+            //           };
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            #endregion
+
+            #region Get departments Mangers
+
+            var result = dbContext.Departments.Join(dbContext.Employees,
+                D => D.MangerId,
+                E => E.Id,
+                (D, E) => new
+                {
+                    EmpName = E.Name,
+                    EmpID = E.Id,
+                    DeptId = D.DebtId,
+                    DeptName = D.DeptName,
+                }).ToList();
+
+            foreach (var item in result)
             {
-                Console.WriteLine($"Employee Name: {Emp01.Name} ");
-                Console.WriteLine($"Department Number: {Emp01.EmpDeptId} ");
-                Console.WriteLine($"Department Name: {Emp01.EmployeeDepartment?.DeptName} ");
+                Console.WriteLine(item);
             }
+            #endregion
 
             #endregion
 
