@@ -341,24 +341,67 @@ namespace EFCoreSession1
 
             #region Get departments Mangers
 
-            var result = dbContext.Departments.Join(dbContext.Employees,
-                D => D.MangerId,
-                E => E.Id,
-                (D, E) => new
-                {
-                    EmpName = E.Name,
-                    EmpID = E.Id,
-                    DeptId = D.DebtId,
-                    DeptName = D.DeptName,
-                }).ToList();
+            //var result = dbContext.Departments.Join(dbContext.Employees,
+            //    D => D.MangerId,
+            //    E => E.Id,
+            //    (D, E) => new
+            //    {
+            //        EmpName = E.Name,
+            //        EmpID = E.Id,
+            //        DeptId = D.DebtId,
+            //        DeptName = D.DeptName,
+            //    }).ToList();
 
-            foreach (var item in result)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
 
             #endregion
+
+
+            #region Group Join [Left outer join]
+
+            #region Get All Departments that has Employees or not
+
+            //var result = dbContext.Departments.GroupJoin(dbContext.Employees,
+            //    D => D.DebtId,
+            //    E => E.EmpDeptId,
+            //    (D, Emps) => new
+            //    {
+            //        Department = D,
+
+            //        Employees = Emps
+            //    }).ToList();
+
+            //var result = from D in dbContext.Departments
+            //             join E in dbContext.Employees
+            //             on D.DebtId equals E.EmpDeptId into Emps
+            //             select new
+            //             {
+            //                 Department = D,
+            //                 Employees = Emps
+            //             };
+
+            //foreach (var dept in result)
+            //{
+            //    Console.WriteLine($"DeptName : {dept.Department.DeptName}");
+            //    foreach(var emp in dept.Employees)
+            //    {
+            //        Console.WriteLine($"   EmpName : {emp.Name}");
+            //    }
+            //}
+
+
+
+            #endregion
+
+
+
+            #endregion
+
+
 
             #endregion
 
