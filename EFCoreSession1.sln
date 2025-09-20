@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreSession1", "EFCoreSes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InhertanceMapping", "InhertanceMapping\InhertanceMapping.csproj", "{7EFB0F63-F4E3-4D11-A6FC-19337CD8F67D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBFirstApprorach", "DBFirstApprorach\DBFirstApprorach.csproj", "{F0870E6E-7F5A-498B-AA05-6A7FBD7982B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7EFB0F63-F4E3-4D11-A6FC-19337CD8F67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EFB0F63-F4E3-4D11-A6FC-19337CD8F67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EFB0F63-F4E3-4D11-A6FC-19337CD8F67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0870E6E-7F5A-498B-AA05-6A7FBD7982B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0870E6E-7F5A-498B-AA05-6A7FBD7982B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0870E6E-7F5A-498B-AA05-6A7FBD7982B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0870E6E-7F5A-498B-AA05-6A7FBD7982B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
