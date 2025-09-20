@@ -8,6 +8,8 @@ namespace DBFirstApprorach
     {
         static void Main(string[] args)
         {
+            using MyNorthwindDBContext myNorthwindDbContext = new MyNorthwindDBContext();
+
 
             #region BD first With Command 
 
@@ -80,6 +82,21 @@ namespace DBFirstApprorach
 
             #endregion
             #endregion
+
+            #region Views
+
+            //var productsByCategories = myNorthwindDbContext1.ProductsByCategories.ToList();   
+            //foreach (var item in productsByCategories)
+            //{
+            //    Console.WriteLine($"{item.CategoryName}--{item.ProductName}");
+            //}
+
+            //create view 
+
+
+
+            #endregion
+
 
         }
     }

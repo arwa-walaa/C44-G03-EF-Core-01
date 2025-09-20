@@ -47,6 +47,10 @@
       {
          "Name": "[dbo].[Region]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Products by Category]",
+         "ObjectType": 3
       }
    ],
    "UiHint": null,

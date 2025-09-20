@@ -81,6 +81,15 @@ namespace EFCoreSession1.Context
 
             #endregion
 
+            #region Handel View 
+
+            modelBuilder.Entity<Models.EmpDeptView>().ToView("EmpDeptView").HasNoKey();
+
+
+            #endregion
+
+
+
 
         }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -127,6 +136,8 @@ namespace EFCoreSession1.Context
 
         public DbSet<Models.Student> Students { get; set; }
         public DbSet<Models.Course> Courses { get; set; }
+
+        public DbSet<Models.EmpDeptView> EmpDeptViews { get; set; }
 
         //public DbSet<Models.Address> Addresses { get; set; }
 
