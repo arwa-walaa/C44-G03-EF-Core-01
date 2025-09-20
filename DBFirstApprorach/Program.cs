@@ -1,4 +1,5 @@
-﻿using DBFirstApprorach.Contexts;
+﻿
+using DBFirstApprorach.Contexts;
 
 namespace DBFirstApprorach
 {
@@ -21,9 +22,26 @@ namespace DBFirstApprorach
 
             //get all products name 
 
-            using MyNorthwindDbContext myNorthwindDbContext = new MyNorthwindDbContext();
-            var products = myNorthwindDbContext.Products.ToList();
+            //using MyNorthwindDbContext myNorthwindDbContext = new MyNorthwindDbContext();
+            //var products = myNorthwindDbContext.Products.ToList();
 
+            //foreach (var item in products)
+            //{
+            //    Console.WriteLine(item.ProductName);
+            //}
+
+            #endregion
+
+            #region DB First With EF core Power Tools
+
+            /*
+             * 1- Install EF Core Power Tools from Extensions
+             *
+             *
+             */
+
+            using MyNorthwindDBContext myNorthwindDbContext = new MyNorthwindDBContext();
+            var products = myNorthwindDbContext.Products.ToList();
             foreach (var item in products)
             {
                 Console.WriteLine(item.ProductName);
