@@ -98,13 +98,53 @@ namespace InhertanceMapping
             //context.Add(pte);
             //context.SaveChanges();
 
-            var Emps = (from E in context.Employees
-                       select E).ToList();
-            foreach(var E in Emps.OfType<PartTimeEmployee>()) {
-                Console.WriteLine(E.Name);
-            }
+            //var Emps = (from E in context.Employees
+            //           select E).ToList();
+            //foreach(var E in Emps.OfType<PartTimeEmployee>()) {
+            //    Console.WriteLine(E.Name);
+            //}
 
             #endregion
+
+            #region Local
+
+            #region Ex01
+
+
+
+            //var Emps = context.Employees.Any(E=>E.Age != null);
+
+            //Console.WriteLine(Emps);
+
+            ////local
+            //var Emps = context.Employees.Local.Any(E => E.Age != null);
+            //Console.WriteLine(Emps);
+            #endregion
+
+            #region Ex02
+
+
+
+            //var Emps = context.Employees.Any(E=>E.Age != null);
+
+            //Console.WriteLine(Emps);
+            //var Emps01 = context.Employees.FirstOrDefault();
+            //if(Emps01 != null)
+            //{
+            //    Console.WriteLine(Emps01.Age);
+            //    Emps01.Age = null;
+            //}
+
+            //var Emps = context.Employees.Any(E => E.Age != null);
+            //Console.WriteLine($"DB {Emps}" );
+            ////local
+            //var LocalEmps = context.Employees.Local.Any(E => E.Age != null);
+            //Console.WriteLine(LocalEmps);
+            #endregion
+
+            #endregion
+
+
 
             #endregion
         }
