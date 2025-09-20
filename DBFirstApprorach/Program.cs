@@ -1,5 +1,6 @@
 ﻿
 using DBFirstApprorach.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace DBFirstApprorach
 {
@@ -36,19 +37,49 @@ namespace DBFirstApprorach
 
             /*
              * 1- Install EF Core Power Tools from Extensions
-             *
+             * don't forget add  TrustServerCertificate=true
              *
              */
 
-            using MyNorthwindDBContext myNorthwindDbContext = new MyNorthwindDBContext();
-            var products = myNorthwindDbContext.Products.ToList();
-            foreach (var item in products)
-            {
-                Console.WriteLine(item.ProductName);
-            }
+            //using MyNorthwindDBContext myNorthwindDbContext = new MyNorthwindDBContext();
+            //var products = myNorthwindDbContext.Products.ToList();
+            //foreach (var item in products)
+            //{
+            //    Console.WriteLine(item.ProductName);
+            //}
 
             #endregion
 
+            #region Run SQL Qurires VIA Application
+
+            using MyNorthwindDBContext myNorthwindDbContext1 = new MyNorthwindDBContext();
+            #region Select
+            //int categoryId = 1;
+            ////var products = myNorthwindDbContext1.Products.FromSqlRaw("select * from Products where CategoryID= {0}", categoryId).ToList();
+
+            ////$
+            //var products = myNorthwindDbContext1.Products.FromSqlInterpolated($"select * from Products where CategoryID= {categoryId}" ).ToList();
+
+
+            //foreach (var item in products)
+            //{
+            //    Console.WriteLine(item.ProductName);
+            //}
+
+            #endregion
+
+            #region Update & Delete
+            //int  ProdID = 1;
+            //var Result = myNorthwindDbContext1.Database.ExecuteSqlInterpolated($"Update Products set ProductName= 'Ice Cofee' where ProductID={ProdID}");
+
+            //int ProdID = 93;
+            //var Result = myNorthwindDbContext1.Database.ExecuteSqlInterpolated($"Delete from Products where ProductID={ProdID}");
+
+
+            //Console.WriteLine(Result);
+
+            #endregion
+            #endregion
 
         }
     }
