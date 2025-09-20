@@ -416,8 +416,20 @@ namespace EFCoreSession1
 
             #endregion
 
-           
+            #region Stored Procedure
+            using CompanyDBContext dbContext = new CompanyDBContext();
+            int deptId = 1;
+            var empDepts = dbContext.EmployeeDeptResults
+                .FromSqlInterpolated($"EXEC GetEmployeesByDept @DeptId={deptId}")
+                .ToList();
 
+            foreach (var item in empDepts)
+            {
+                Console.WriteLine($"EmpID: {item.EmployeeID} , EmpName: {item.Name} , DeptID: {item.DebtId} , DeptName: {item.DeptName}");
+            }
+
+
+            #endregion
         }
     }
 }

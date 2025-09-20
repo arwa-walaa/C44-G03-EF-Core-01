@@ -85,6 +85,7 @@ namespace EFCoreSession1.Context
 
             modelBuilder.Entity<Models.EmpDeptView>().ToView("EmpDeptView").HasNoKey();
 
+            modelBuilder.Entity<Models.EmployeeDeptResult>().HasNoKey();
 
             #endregion
 
@@ -138,6 +139,7 @@ namespace EFCoreSession1.Context
         public DbSet<Models.Course> Courses { get; set; }
 
         public DbSet<Models.EmpDeptView> EmpDeptViews { get; set; }
+        public DbSet<EmployeeDeptResult> EmployeeDeptResults { get; set; }
 
         //public DbSet<Models.Address> Addresses { get; set; }
 
